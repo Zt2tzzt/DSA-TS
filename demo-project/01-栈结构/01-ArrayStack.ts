@@ -31,7 +31,7 @@ export class ArrayStack<T> implements IStack<T> {
 }
 
 // 示例使用
-/* const stack = new ArrayStack<number>();
+const stack = new ArrayStack<number>();
 stack.push(1);
 stack.push(2);
 stack.push(3);
@@ -39,4 +39,4 @@ stack.push(3);
 console.log(stack.pop());    // 输出：3
 console.log(stack.peek());   // 输出：2
 console.log(stack.size());   // 输出：2
-console.log(stack.isEmpty());  // 输出：false */
+console.log(stack.isEmpty());  // 输出：false

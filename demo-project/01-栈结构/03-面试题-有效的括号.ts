@@ -16,11 +16,13 @@ function isValid(str:string) {
         stack.push(']')
         break;
       default:
+        // 一旦有一个括号未匹配，就返回 false
         if (c !== stack.pop()) return false
         break;
     }
   }
 
+  // 如果栈中，还有元素，表示有括号没匹配，返回 false，否则返回 true
   return stack.isEmpty()
 }
 
