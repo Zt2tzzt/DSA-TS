@@ -1,4 +1,4 @@
-import { ArrayStack  } from './01-ArrayStack';
+import { ArrayStack } from './01-ArrayStack';
 
 function isValid(str:string) {
   const stack = new ArrayStack()
