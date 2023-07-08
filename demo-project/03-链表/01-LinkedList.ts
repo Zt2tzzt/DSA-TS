@@ -50,7 +50,7 @@ class LinkedList<T> {
     console.log(values.join('->'))
   }
 
-  insert(value: T, position: number): boolean {
+  insert(position: number, value: T): boolean {
     // 越界处理
     if (position < 0 || position > this.size) {
       return false
@@ -77,16 +77,20 @@ class LinkedList<T> {
     // 越界处理
     if (position < 0 || position >= this.size) return null
 
-    let current = this.head
+    let removeNode: Node<T> | null = null
     if (position === 0) {
-      this.head = current?.next ?? null
+      // 情况一：删除链表头部元素。
+      removeNode = this.head ?? null
+      this.head = this.head?.next ?? null
     } else {
+      // 情况二：删除链表头部元素以外的元素。
       const previous = this.getNode(position - 1)
+      removeNode = previous?.next ?? null
       previous!.next = previous?.next?.next ?? null
     }
 
     this.size--
-    return current?.value ?? null
+    return removeNode?.value ?? null
   }
 
   get(position: number): T | null {
@@ -132,16 +136,16 @@ linkedList.append('ddd')
 linkedList.traverse()
 
 console.log('insert-------------')
-linkedList.insert('abc', 0)
+linkedList.insert(0, 'abc')
 linkedList.traverse()
-linkedList.insert('cba', 2)
-linkedList.insert('nba', 6)
+linkedList.insert(2, 'cba')
+linkedList.insert(6, 'nba')
 linkedList.traverse()
 
 console.log('removeat----------')
-linkedList.removeAt(0)
+console.log(linkedList.removeAt(0))
 linkedList.traverse()
-linkedList.removeAt(2)
+console.log(linkedList.removeAt(2))
 linkedList.traverse()
 
 console.log('get---------------')
