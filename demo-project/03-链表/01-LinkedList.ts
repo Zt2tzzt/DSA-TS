@@ -1,15 +1,13 @@
+import type ILinkedList from '../type/ilinkedlist';
+
 class Node<T> {
   next: Node<T> | null = null
   constructor(public value: T) {}
 }
 
-class LinkedList<T> {
+class LinkedList<T> implements ILinkedList<T> {
   head: Node<T> | null = null
-  private size: number = 0
-
-  get length() {
-    return this.size
-  }
+  private length: number = 0
 
   private getNode(position: number): Node<T> | null {
     let index = 0
@@ -19,6 +17,14 @@ class LinkedList<T> {
     }
 
     return current
+  }
+
+  size() {
+    return this.length
+  }
+
+  peek(): T | undefined {
+    return this.head?.value
   }
 
   append(value: T) {
@@ -35,7 +41,7 @@ class LinkedList<T> {
       }
       current.next = newNode
     }
-    this.size++
+    this.length++
   }
 
   traverse() {
@@ -52,7 +58,7 @@ class LinkedList<T> {
 
   insert(position: number, value: T): boolean {
     // 越界处理
-    if (position < 0 || position > this.size) {
+    if (position < 0 || position > this.length) {
       return false
     }
 
@@ -69,13 +75,13 @@ class LinkedList<T> {
       previous!.next = newNode
     }
 
-    this.size++
+    this.length++
     return true
   }
 
   removeAt(position: number): T | null {
     // 越界处理
-    if (position < 0 || position >= this.size) return null
+    if (position < 0 || position >= this.length) return null
 
     let removeNode: Node<T> | null = null
     if (position === 0) {
@@ -89,18 +95,18 @@ class LinkedList<T> {
       previous!.next = previous?.next?.next ?? null
     }
 
-    this.size--
+    this.length--
     return removeNode?.value ?? null
   }
 
   get(position: number): T | null {
-    if (position < 0 || position >= this.size) return null
+    if (position < 0 || position >= this.length) return null
 
     return this.getNode(position)?.value ?? null
   }
 
   update(position: number, value: T): boolean {
-    if (position < 0 || position >= this.size) return false
+    if (position < 0 || position >= this.length) return false
 
     const node = this.getNode(position)
     node!.value = value
@@ -124,7 +130,7 @@ class LinkedList<T> {
   }
 
   isEmpty(): boolean {
-    return this.size === 0
+    return this.length === 0
   }
 }
 

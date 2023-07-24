@@ -1,4 +1,4 @@
-import type { IStack } from './istack';
+import type { IStack } from '../type/istack'
 
 /**
  * @description: 此类用于：封装栈（Stack)数据结构。
@@ -6,27 +6,27 @@ import type { IStack } from './istack';
  * @return {*}
  */
 export class ArrayStack<T> implements IStack<T> {
-  private data: T[] = [];
+  private data: T[] = []
 
   push(item: T): void {
-    this.data.push(item);
+    this.data.push(item)
   }
 
   pop(): T | undefined {
-    return this.data.pop();
+    return this.data.pop()
   }
 
   // 此函数用于：获取栈顶的元素
   peek(): T | undefined {
-    return this.data[this.data.length - 1];
+    return this.data[this.data.length - 1]
   }
 
   isEmpty(): boolean {
-    return this.data.length === 0;
+    return this.data.length === 0
   }
 
   size(): number {
-    return this.data.length;
+    return this.data.length
   }
 }
 

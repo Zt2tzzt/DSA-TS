@@ -1,4 +1,4 @@
-import type { IList } from "../type/ilist"
+import type IList from './ilist'
 
 export interface IQueue<T> extends IList<T> {
   enqueue(item: T): void

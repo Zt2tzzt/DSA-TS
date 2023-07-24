@@ -1,34 +1,34 @@
-import type { IQueue } from './iqueue';
+import type { IQueue } from '../type/iqueue'
 
-export class ArrayQueue<T> implements IQueue<T>  {
-  private data: T[];
+export class ArrayQueue<T> implements IQueue<T> {
+  private data: T[]
 
   constructor() {
-    this.data = [];
+    this.data = []
   }
 
   enqueue(item: T) {
-    this.data.push(item);
+    this.data.push(item)
   }
 
   dequeue(): T | undefined {
-    return this.data.shift();
+    return this.data.shift()
   }
 
   peek(): T | undefined {
-    return this.data[0];
+    return this.data[0]
   }
 
   isEmpty(): boolean {
-    return this.data.length === 0;
+    return this.data.length === 0
   }
 
   size(): number {
-    return this.data.length;
+    return this.data.length
   }
 
   clear() {
-    this.data = [];
+    this.data = []
   }
 }
 
