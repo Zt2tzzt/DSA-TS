@@ -1,0 +1,15 @@
+lockfileVersion: 5.4
+
+specifiers:
+  hy-algokit: ^1.4.0
+
+dependencies:
+  hy-algokit: registry.npmmirror.com/hy-algokit/1.4.0
+
+packages:
+
+  registry.npmmirror.com/hy-algokit/1.4.0:
+    resolution: {integrity: sha512-Eehnx7YS7VUzZsuntin9B2kolfIWYtPOsh922ZQ/ZUZxP1nUIWqIw2sna5lXpU5SzkOugeNdIDGN1sRnv3yeIw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hy-algokit/-/hy-algokit-1.4.0.tgz}
+    name: hy-algokit
+    version: 1.4.0
+    dev: false
