@@ -54,6 +54,23 @@ class BSTree<T> {
     }
   }
 
+  /**
+   * @description: 此函数用于：二叉搜索树的遍历操作
+   * @Author: ZeT1an
+   * @return {*}
+   */
+  preorderTraverse() {
+    this.preOrderTraverseNode(this.root)
+  }
+  private preOrderTraverseNode(node: TreeNode<T> | null) {
+    if (node) {
+      console.log(node.value)
+      this.preOrderTraverseNode(node.left)
+      this.preOrderTraverseNode(node.right)
+    }
+  }
+
+  
 }
 
 export default BSTree
@@ -77,3 +94,4 @@ bst.insert(25)
 bst.insert(6)
 
 bst.print()
+bst.preorderTraverse()

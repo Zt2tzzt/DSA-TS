@@ -54,6 +54,37 @@ class BSTree<T> {
     }
   }
 
+  /**
+   * @description: 此函数用于：二叉树的先序遍历操作
+   * @Author: ZeT1an
+   * @return {*}
+   */
+  preOrderTraverse() {
+    this.preOrderTraverseNode(this.root)
+  }
+  private preOrderTraverseNode(node: TreeNode<T> | null) {
+    if (node) {
+      console.log(node.value)
+      this.preOrderTraverseNode(node.left)
+      this.preOrderTraverseNode(node.right)
+    }
+  }
+  
+  /**
+   * @description: 此函数用于：二叉树的中序遍历操作
+   * @Author: ZeT1an
+   * @return {*}
+   */
+  inOrderTraverse() {
+    this.inOrderTraverseNode(this.root)
+  }
+  private inOrderTraverseNode(node: TreeNode<T> | null) { 
+    if (node) {
+      this.inOrderTraverseNode(node.left)
+      console.log(node.value)
+      this.inOrderTraverseNode(node.right)
+    }
+  }
 }
 
 export default BSTree
@@ -77,3 +108,4 @@ bst.insert(25)
 bst.insert(6)
 
 bst.print()
+bst.inOrderTraverse()

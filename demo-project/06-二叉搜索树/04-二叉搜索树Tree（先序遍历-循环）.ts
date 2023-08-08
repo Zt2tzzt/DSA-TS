@@ -54,6 +54,25 @@ class BSTree<T> {
     }
   }
 
+  /**
+   * @description: 此函数用于：二叉树的遍历操作
+   * @Author: ZeT1an
+   * @return {*}
+   */
+  preorderTraverse() {
+    let stack: TreeNode<T>[] = []
+    let current: TreeNode<T> | null = this.root
+
+    while(current !== null || stack.length !== 0) {
+      while(current !== null) {
+        console.log(current.value)
+        stack.push(current)
+        current = current.left
+      }
+      current = stack.pop()!
+      current = current.right
+    }
+  }
 }
 
 export default BSTree
@@ -77,3 +96,4 @@ bst.insert(25)
 bst.insert(6)
 
 bst.print()
+bst.preorderTraverse()

@@ -37,7 +37,6 @@ class BSTree<T> {
       this.insertNode(this.root, newNode)
     }
   }
-
   private insertNode(node: TreeNode<T>, newNode: TreeNode<T>) {
     if (newNode.value < node.value) {
       if (!node.left) {
@@ -54,6 +53,53 @@ class BSTree<T> {
     }
   }
 
+  /**
+   * @description: 此函数用于：二叉搜索树的遍历操作
+   * @Author: ZeT1an
+   * @return {*}
+   */
+  preorderTraverse() {
+    this.preOrderTraverseNode(this.root)
+  }
+  private preOrderTraverseNode(node: TreeNode<T> | null) {
+    if (node) {
+      console.log(node.value)
+      this.preOrderTraverseNode(node.left)
+      this.preOrderTraverseNode(node.right)
+    }
+  }
+
+  /**
+   * @description: 此函数用于：二叉树的中序遍历操作
+   * @Author: ZeT1an
+   * @return {*}
+   */  
+  inOrderTraverse() {
+    this.inOrderTraverseNode(this.root)
+  }
+  private inOrderTraverseNode(node: TreeNode<T> | null) { 
+    if (node) {
+      this.inOrderTraverseNode(node.left)
+      console.log(node.value)
+      this.inOrderTraverseNode(node.right)
+    }
+  }
+
+  /**
+   * @description: 此函数用于：二叉树的后序遍历操作
+   * @Author: ZeT1an
+   * @return {*}
+   */
+  postOrderTraverse() {
+    this.postOrderTraverseNode(this.root)
+  }
+  private postOrderTraverseNode(node: TreeNode<T> | null) {
+    if (node) {
+      this.postOrderTraverseNode(node.left)
+      this.postOrderTraverseNode(node.right)
+      console.log(node.value)
+    }
+  }
 }
 
 export default BSTree
@@ -77,3 +123,4 @@ bst.insert(25)
 bst.insert(6)
 
 bst.print()
+bst.postOrderTraverse()

@@ -37,7 +37,6 @@ class BSTree<T> {
       this.insertNode(this.root, newNode)
     }
   }
-
   private insertNode(node: TreeNode<T>, newNode: TreeNode<T>) {
     if (newNode.value < node.value) {
       if (!node.left) {
@@ -54,6 +53,33 @@ class BSTree<T> {
     }
   }
 
+  /**
+   * @description: 此函数用于：二叉树的后序遍历操作
+   * @Author: ZeT1an
+   * @return {*}
+   */
+  postOrderTraverse() {
+    let stack: TreeNode<T>[] = []
+    let current: TreeNode<T> | null = this.root;
+    let lastVisitedNode: TreeNode<T> | null = null;
+
+    while (current || stack.length) {
+      while (current) {
+        stack.push(current)
+        current = current.left
+      }
+
+      current = stack[stack.length - 1]
+      if (!current.right || current.right === lastVisitedNode) {
+        console.log(current.value)
+        lastVisitedNode = current
+        stack.pop()
+        current = null
+      } else {
+        current = current.right
+      }
+    }
+  }
 }
 
 export default BSTree
@@ -77,3 +103,4 @@ bst.insert(25)
 bst.insert(6)
 
 bst.print()
+bst.postOrderTraverse()
