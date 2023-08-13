@@ -262,6 +262,12 @@ class BSTree<T> {
     return true
   }
 
+  /**
+   * @description: 此方法用于：寻找要删除节点的后继节点。
+   * @Author: ZeT1an
+   * @param {TreeNode} delNode 要删除的节点
+   * @return {TreeNode} 后继节点
+   */
   private getSuccessor(delNode: TreeNode<T>): TreeNode<T> {
     // 获取待删除节点的右子树
     let current = delNode.right
