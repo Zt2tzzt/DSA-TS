@@ -1,5 +1,5 @@
 class Graph<T> {
-  private verteces: T[] = []
+  private vertexes: T[] = []
 
   private adjListL: Map<T, T[]> = new Map()
 }
