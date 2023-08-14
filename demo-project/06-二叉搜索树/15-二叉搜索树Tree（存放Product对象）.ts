@@ -1,6 +1,7 @@
 import { PrintableNode, btPrint } from 'hy-algokit'
 
 class Node<T> {
+  // 保存节点值的属性是 data，不再是 value  
   constructor(public data: T) {}
 }
 
@@ -16,7 +17,8 @@ class TreeNode<T> extends Node<T> implements PrintableNode {
   get isRight(): boolean {
     return !!(this.parent && this.parent.right === this)
   }
-
+  
+  // 用于 hy-algokit 的 btprint 方法打印二叉树
   get value() {
     const data = (this.data) as Product
     return `${data.name} - ${data.price}`

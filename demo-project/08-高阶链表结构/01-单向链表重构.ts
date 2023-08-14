@@ -53,9 +53,9 @@ class LinkedList<T> implements ILinkedList<T> {
     while (current) {
       values.push(current.value)
 
-      // 判断是否遍历到最后一个节点，防止死循环
+      // 判断是否遍历到最后一个节点。
       if (this.isTail(current)) {
-        current = null
+        current = null // 防止死循环
       } else {
         current = current.next
       }
@@ -71,9 +71,7 @@ class LinkedList<T> implements ILinkedList<T> {
 
   insert(position: number, value: T): boolean {
     // 越界处理
-    if (position < 0 || position > this.length) {
-      return false
-    }
+    if (position < 0 || position > this.length) return false
 
     const newNode = new Node(value)
 
