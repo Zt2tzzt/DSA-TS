@@ -8,7 +8,7 @@ class LinkedList<T> implements ILinkedList<T> {
   protected tail: Node<T> | null = null
   protected length: number = 0
 
-  private getNode(position: number): Node<T> | null {
+  protected getNode(position: number): Node<T> | null {
     let index = 0
     let current = this.head
     while (index++ < position && current) {

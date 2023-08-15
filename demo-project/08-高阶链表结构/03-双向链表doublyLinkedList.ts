@@ -45,6 +45,28 @@ export class DoublyLinkedList<T> extends LinkedList<T> {
 
     console.log(values.join('->'))
   }
+
+  insert(position: number, value: T): boolean {
+    if (position < 0 || position > this.length) return false
+
+    if (position === 0) {
+      this.prepend(value)
+    } else if (position === this.length) {
+      this.append(value)
+    } else {
+      const newNode = new DoublyNode(value)
+      const current = this.getNode(position) as DoublyNode<T>
+
+      current.prev!.next = newNode
+      newNode.next = current
+      newNode.prev = current.prev
+      current.prev = newNode // 该操作，要放在最后。
+
+      this.length++
+    }
+
+    return true
+  }
 }
 
 const dlinkedList = new DoublyLinkedList<string>()
@@ -57,4 +79,11 @@ dlinkedList.prepend('abc')
 dlinkedList.prepend('cba')
 
 dlinkedList.traverse()
+dlinkedList.postTraverse()
 
+dlinkedList.insert(0, "why")
+dlinkedList.insert(7, "kobe")
+dlinkedList.insert(3, "james")
+
+dlinkedList.traverse()
+dlinkedList.postTraverse()
