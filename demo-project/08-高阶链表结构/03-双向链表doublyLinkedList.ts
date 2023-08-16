@@ -8,11 +8,10 @@ export class DoublyLinkedList<T> extends LinkedList<T> {
   append(value: T): void {
     const newNode = new DoublyNode(value)
 
-    if (!this.head) {
-      // 如果链表中没有存放元素
+    if (!this.head) { // 如果链表中没有存放元素
       this.head = newNode
       this.tail = newNode
-    } else {
+    } else { // 链表中至少有一个元素。
       this.tail!.next = newNode
       newNode.prev = this.tail
       this.tail = newNode
@@ -24,11 +23,10 @@ export class DoublyLinkedList<T> extends LinkedList<T> {
   prepend(value: T): void {
     const newNode = new DoublyNode(value)
 
-    if (!this.head) {
-      // 如果链表中没有存放元素
+    if (!this.head) { // 如果链表中没有存放元素
       this.head = newNode
       this.tail = newNode
-    } else {
+    } else { // 链表中至少有一个元素。
       newNode.next = this.head
       this.head.prev = newNode
       this.head = newNode
@@ -51,11 +49,11 @@ export class DoublyLinkedList<T> extends LinkedList<T> {
   insert(position: number, value: T): boolean {
     if (position < 0 || position > this.length) return false
 
-    if (position === 0) {
+    if (position === 0) { // 在头部插入元素
       this.prepend(value)
-    } else if (position === this.length) {
+    } else if (position === this.length) { // 在尾部插入元素
       this.append(value)
-    } else {
+    } else { // 在中间插入元素
       const newNode = new DoublyNode(value)
       const current = this.getNode(position) as DoublyNode<T>
 
