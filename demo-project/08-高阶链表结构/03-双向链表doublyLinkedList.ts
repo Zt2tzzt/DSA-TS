@@ -8,7 +8,8 @@ export class DoublyLinkedList<T> extends LinkedList<T> {
   append(value: T): void {
     const newNode = new DoublyNode(value)
 
-    if (!this.head) { // 如果链表中没有存放元素
+    if (!this.head) {
+      // 如果链表中没有存放元素
       this.head = newNode
       this.tail = newNode
     } else {
@@ -22,8 +23,9 @@ export class DoublyLinkedList<T> extends LinkedList<T> {
 
   prepend(value: T): void {
     const newNode = new DoublyNode(value)
-    
-    if (!this.head) { // 如果链表中没有存放元素
+
+    if (!this.head) {
+      // 如果链表中没有存放元素
       this.head = newNode
       this.tail = newNode
     } else {
@@ -67,9 +69,36 @@ export class DoublyLinkedList<T> extends LinkedList<T> {
 
     return true
   }
+
+  removeAt(position: number): T | null {
+    if (position < 0 || position >= this.length) return null
+
+    let current = this.head
+    if (position === 0) { // 删除的是头节点。
+      if (this.length == 1) { // 链表仅有一个节点
+        this.head = null
+        this.tail = null
+      } else { // 链表并非仅有一个节点
+        this.head = this.head!.next
+        this.head!.prev = null
+      }
+    } else if (position === this.length - 1) { // 删除的是尾节点
+      current = this.tail
+      this.tail = this.tail!.prev
+      this.tail!.next = null
+    } else { // 删除的是非尾部、头部的节点
+      current = this.getNode(position) as DoublyNode<T>
+      current.prev!.next = current.next
+      current.next!.prev = current.prev
+    }
+
+    this.length--
+    return current?.value ?? null
+  }
 }
 
 const dlinkedList = new DoublyLinkedList<string>()
+console.log('----------- append / prepend ----------')
 dlinkedList.append('aaa')
 dlinkedList.append('bbb')
 dlinkedList.append('ccc')
@@ -81,9 +110,43 @@ dlinkedList.prepend('cba')
 dlinkedList.traverse()
 dlinkedList.postTraverse()
 
-dlinkedList.insert(0, "why")
-dlinkedList.insert(7, "kobe")
-dlinkedList.insert(3, "james")
+console.log('----------- insert ----------')
+dlinkedList.insert(0, 'zzt')
+dlinkedList.insert(7, 'kobe')
+dlinkedList.insert(3, 'james')
 
 dlinkedList.traverse()
 dlinkedList.postTraverse()
+
+console.log('----------- removeAt ----------')
+dlinkedList.removeAt(0)
+dlinkedList.removeAt(7)
+dlinkedList.removeAt(2)
+dlinkedList.traverse()
+dlinkedList.postTraverse()
+
+console.log('----------- 其它方法测试 ----------')
+console.log('----------- get ---------')
+console.log(dlinkedList.get(0))
+console.log(dlinkedList.get(1))
+console.log(dlinkedList.get(2))
+
+console.log('----------- update ---------')
+dlinkedList.update(1, 'zzt')
+dlinkedList.update(2, 'kobe')
+dlinkedList.traverse()
+
+console.log('----------- indexof ---------')
+console.log(dlinkedList.indexOf('cba'))
+console.log(dlinkedList.indexOf('zzt'))
+console.log(dlinkedList.indexOf('kobe'))
+console.log(dlinkedList.indexOf('james'))
+
+console.log('----------- rmove ---------')
+
+dlinkedList.remove('zzt')
+dlinkedList.remove('kobe')
+dlinkedList.remove('cba')
+dlinkedList.traverse()
+console.log(dlinkedList.isEmpty())
+console.log(dlinkedList.size())
