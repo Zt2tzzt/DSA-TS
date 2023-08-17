@@ -75,7 +75,7 @@ class LinkedList<T> implements ILinkedList<T> {
 
     const newNode = new Node(value)
 
-    if (position === 0) { // 情况一：情况一：添加到链表头部（第一个）位置，
+    if (position === 0) { // 情况一：添加到链表头部（第一个）位置，
       newNode.next = this.head
       this.head = newNode
     } else {
