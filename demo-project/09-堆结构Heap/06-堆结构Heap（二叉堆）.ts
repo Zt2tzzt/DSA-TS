@@ -1,3 +1,5 @@
+import { cbtPrint } from 'hy-algokit';
+
 class Heap<T> {
   data: T[] = []
   private length: number = 0
@@ -106,6 +108,10 @@ class Heap<T> {
   isEmpty() {
     return this.length === 0
   }
+
+  print() {
+    cbtPrint(this.data)
+  }
 }
 
 export default Heap
@@ -113,6 +119,7 @@ export default Heap
 // 测试
 const arr = [9, 11, 20, 56, 23, 45]
 const heap = new Heap<number>(arr, false)
+heap.print()
 
 console.log(heap.data)
 console.log(heap.extract())
