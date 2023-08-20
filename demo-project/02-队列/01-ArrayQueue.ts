@@ -1,7 +1,7 @@
 import type { IQueue } from '../type/iqueue'
 
 export class ArrayQueue<T> implements IQueue<T> {
-  private data: T[]
+  protected data: T[]
 
   constructor() {
     this.data = []
@@ -31,6 +31,8 @@ export class ArrayQueue<T> implements IQueue<T> {
     this.data = []
   }
 }
+
+export default ArrayQueue
 
 // 示例用法
 /* const queue = new ArrayQueue<number>();

@@ -4,7 +4,7 @@ class Node<T> {
   constructor(public value: T) {}
 }
 
-class TreeNode<T> extends Node<T> {
+export class TreeNode<T> extends Node<T> {
   left: TreeNode<T> | null = null
   right: TreeNode<T> | null = null
   // 当前节点的父节点
@@ -273,7 +273,7 @@ class BSTree<T> {
 export default BSTree
 
 // 测试
-const bst = new BSTree<number>()
+/* const bst = new BSTree<number>()
 bst.insert(11)
 bst.insert(7)
 bst.insert(15)
@@ -296,4 +296,4 @@ bst.print()
 bst.remove(13)
 bst.print()
 bst.remove(7)
-bst.print()
+bst.print() */

@@ -117,9 +117,9 @@ class Heap<T> {
 export default Heap
 
 // 测试
-const arr = [9, 11, 20, 56, 23, 45]
+/* const arr = [9, 11, 20, 56, 23, 45]
 const heap = new Heap<number>(arr, false)
 heap.print()
 
 console.log(heap.data)
-console.log(heap.extract())
+console.log(heap.extract()) */
