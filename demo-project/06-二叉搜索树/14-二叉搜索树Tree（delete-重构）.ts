@@ -23,7 +23,11 @@ export class TreeNode<T> extends Node<T> {
  * @Author: ZeT1an
  */
 class BSTree<T> {
-  private root: TreeNode<T> | null = null
+  protected root: TreeNode<T> | null = null
+
+  protected createNode(value: T): TreeNode<T> {
+    return new TreeNode(value)
+  }
 
   print() {
     btPrint(this.root)
@@ -37,7 +41,7 @@ class BSTree<T> {
    */
   insert(value: T) {
     // 1.根据传入的 value，创建 Node 节点。
-    const newNode = new TreeNode(value)
+    const newNode = this.createNode(value)
 
     // 2.判断当前是否已经有了根节点
     if (!this.root) {
@@ -50,12 +54,14 @@ class BSTree<T> {
     if (newNode.value < node.value) {
       if (!node.left) {
         node.left = newNode
+        newNode.parent = node // 新增插入的节点的 parent 引用
       } else {
         this.insertNode(node.left, newNode)
       }
     } else {
       if (!node.right) {
         node.right = newNode
+        newNode.parent = node // 新增插入的节点的 parent 引用
       } else {
         this.insertNode(node.right, newNode)
       }
