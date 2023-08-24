@@ -14,22 +14,26 @@ class AVLTreeNode<T> extends TreeNode<T> {
     const leftNode = this.left
     const rightNode = this.right
 
-    const leftHeight = leftNode?.getHeight() ?? -1
-    const rightHeight = rightNode?.getHeight() ?? -1
+    const [leftHeight, rightHeight] = this.getHeight()
     return leftHeight > rightHeight ? leftNode
       : leftHeight < rightHeight ? rightNode
       : this.isLeft ? leftNode : rightNode
   }
 
-  private getHeight(): number {
-    const leftHeight = this.left?.getHeight() ?? -1
-    const rightHeight = this.right?.getHeight() ?? -1
+  private getHeight(): number[] {
+    return [
+      this.left?.getHeigher() ?? -1,
+      this.right?.getHeigher() ?? -1
+    ]
+  }
+
+  private getHeigher(): number {
+    const [leftHeight, rightHeight] = this.getHeight()
     return Math.max(leftHeight, rightHeight) + 1
   }
 
   private getBalanceFactor(): number {
-    const leftHeight = this.left?.getHeight() ?? -1
-    const rightHeight = this.right?.getHeight() ?? -1
+    const [leftHeight, rightHeight] = this.getHeight()
     return leftHeight - rightHeight
   }
 
