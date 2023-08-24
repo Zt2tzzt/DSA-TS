@@ -29,7 +29,7 @@ class Heap<T> {
 
   extract(): T | undefined {
     // 1.判断元素的个数为 0 或者 1 的情况
-    if (this.length === 0) return undefined
+    if (this.length === 0) return
     if (this.length === 1) {
       this.length--
       return this.data.pop()
