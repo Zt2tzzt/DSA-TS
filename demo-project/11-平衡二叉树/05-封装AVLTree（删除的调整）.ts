@@ -9,12 +9,17 @@ class AVLTree<T> extends BSTree<T> {
   }
 
   // 查找不平衡的节点，并对该节点进行再平衡
-  protected checkBalance(node: AVLTreeNode<T>) {
+  protected checkBalance(node: AVLTreeNode<T>, isAdd = true) {
     let current = node.parent
 
     while (current) {
       if (!current.isBalance) {
         this.rebalance(current)
+        // 这个位置是旋转完成后的操作
+        // break 决定不会进一步去查找父节点有没有平衡的情况
+        // insert，不需要进一步向上查找父节点，直接 break；
+        // delete，需要进一步向上查找，不能 break
+        if (isAdd) break
       }
       current = current.parent
     }
