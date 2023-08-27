@@ -69,8 +69,6 @@ class HashTable<T = any> {
         return tuplevalue
       }
     }
-
-    return undefined
   }
   
 }
