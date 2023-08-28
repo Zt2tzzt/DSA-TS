@@ -59,10 +59,23 @@ class AVLTree<T> extends BSTree<T> {
 
 // 测试
 const avlTree = new AVLTree<number>()
-/* avlTree.insert(10)
-avlTree.insert(15)
-avlTree.insert(20) */
+
+const delNums: number[] = []
 for (let i = 0; i < 20; i++) {
-  avlTree.insert(Math.floor(Math.random() * 200))
+  const randomNum = Math.floor(Math.random() * 200)
+
+  if (i % 2 === 0 && delNums.length < 10) {
+    delNums.push(randomNum)
+  }
+
+  avlTree.insert(randomNum)
 }
+
+console.log('delNums:', delNums)
 avlTree.print()
+
+for (const delNum of delNums) {
+  avlTree.remove(delNum)
+  console.log('删除了：', delNum)
+  avlTree.print()
+}

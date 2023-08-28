@@ -246,7 +246,7 @@ class BSTree<T> {
 
       current.value = successor.value
       delNode = successor
-      this.checkBalance(delNode)
+      this.checkBalance(delNode, false)
       
       return true
     }
@@ -285,11 +285,18 @@ class BSTree<T> {
     // 拿到后继节点
     if (successor !== delNode.right) {
       successor!.parent!.left = successor!.right
-      successor!.right = delNode.right
+      if (successor?.right) {
+        successor.right.parent = successor!.parent
+      }
+    } else {
+      delNode.right = successor!.right
+      if (successor?.right) {
+        successor.right.parent = delNode
+      }
     }
 
     // 将删除节点的 left，赋值给后继节点的 left
-    successor!.left = delNode.left
+    // successor!.left = delNode.left
 
     return successor!
   }
