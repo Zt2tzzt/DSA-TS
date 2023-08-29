@@ -8,7 +8,7 @@ class Heap<T> {
     this.data[i] = this.data[j]
     this.data[j] = temp */
 
-    // 使用元组，解构赋值，来实现元素的交换
+    // 使用 ES6 的解构赋值，来实现元素的交换
     ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
   }
 
