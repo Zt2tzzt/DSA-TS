@@ -4,7 +4,7 @@ import { testSort } from './utils';
 export default function bubbleSort(arr: number[]): number[] {
   const n = arr.length
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < n - 1; i++) {
     let swapped = false
 
     for (let j = 0; j < n - i - 1; j++) {
