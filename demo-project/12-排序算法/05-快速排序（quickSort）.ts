@@ -33,5 +33,5 @@ function quickSort(arr: number[]): number[] {
 }
 
 // 测试
-// testSort(quickSort)
-measureSort(quickSort)
+testSort(quickSort)
+// measureSort(quickSort)
