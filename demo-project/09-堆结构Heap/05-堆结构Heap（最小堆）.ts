@@ -15,7 +15,7 @@ class Heap<T> {
     this.data = arr
     this.length = arr.length
 
-    for (let i = Math.floor((this.length - 2) / 2); i >= 0; i--) {
+    for (let i = Math.floor((this.length - 1) / 2 - 1); i >= 0; i--) {
       this.heapfy_down(i)
     }
   }
@@ -32,7 +32,7 @@ class Heap<T> {
     let index = this.length - 1
 
     while (index > 0) {
-      let parentIndex = Math.floor((index - 1) / 2)
+      let parentIndex = Math.floor(index / 2 - 1)
 
       if (this.data[parentIndex] <= this.data[index]) break
 

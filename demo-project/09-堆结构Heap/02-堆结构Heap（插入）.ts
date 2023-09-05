@@ -18,7 +18,7 @@ class Heap<T> {
     let index = this.length - 1
 
     while (index > 0) {
-      let parentIndex = Math.floor((index - 1) / 2)
+      let parentIndex = Math.floor(index / 2 - 1)
 
       if (this.data[index] <= this.data[parentIndex]) break
 
