@@ -1,7 +1,7 @@
 import { measureSort, swap } from 'hy-algokit';
 import { testSort } from './utils';
 
-export const selectionSort = (arr: number[]): number[] => {
+const selectionSort = (arr: number[]): number[] => {
   const n = arr.length
   
   for (let i = 0; i < n - 1; i++) {
@@ -17,5 +17,7 @@ export const selectionSort = (arr: number[]): number[] => {
   return arr
 }
 
+export default selectionSort
+
 // measureSort(selectionSort)
-testSort(selectionSort)
+// testSort(selectionSort)

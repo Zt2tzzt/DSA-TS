@@ -38,5 +38,5 @@ export default function mergeSort(arr: number[]): number[] {
 }
 
 // 测试
-testSort(mergeSort)
-measureSort(mergeSort)
+// testSort(mergeSort)
+// measureSort(mergeSort)

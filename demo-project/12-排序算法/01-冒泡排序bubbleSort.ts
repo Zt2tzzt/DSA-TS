@@ -21,4 +21,4 @@ export default function bubbleSort(arr: number[]): number[] {
   return arr
 }
 
-testSort(bubbleSort)
+// testSort(bubbleSort)

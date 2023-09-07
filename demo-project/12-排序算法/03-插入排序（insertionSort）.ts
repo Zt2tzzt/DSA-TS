@@ -1,6 +1,6 @@
 import { testSort, measureSort } from 'hy-algokit';
 
-function insertionSort(arr: number[]): number[] {
+export default function insertionSort(arr: number[]): number[] {
   const n = arr.length
   for (let i = 1; i < n; i++) {
     const current = arr[i];
@@ -18,5 +18,5 @@ function insertionSort(arr: number[]): number[] {
 }
 
 // 测试
-testSort(insertionSort)
-measureSort(insertionSort)
+// testSort(insertionSort)
+// measureSort(insertionSort)

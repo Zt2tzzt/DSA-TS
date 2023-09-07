@@ -40,5 +40,5 @@ function heapfy_down(arr: number[], n: number, index: number) {
 }
 
 // 测试
-testSort(heapSort)
-measureSort(heapSort)
+// testSort(heapSort)
+// measureSort(heapSort)
