@@ -1,7 +1,7 @@
 // import { testSort } from 'hy-algokit';
 
 function swap(arr: number[], i: number, j: number) {
-  [arr[i], arr[j] ] = [arr[j], arr[i]]
+  [arr[i], arr[j]] = [arr[j], arr[i]]
 }
 
 function isSorted(arr: number[]) {
@@ -23,27 +23,41 @@ function testSort(fn: SortFn) {
   console.log('排序后的数组是否有序：', isSorted(newArr))
 }
 
+// ------------
 
-
-function selectionSort(arr: number[]): number[] {
+function heapSort(arr: number[]): number[] {
   const n = arr.length
 
-  for (let i  = 0; i < n - 1 ; i++) {
-    let minIndex = i
+  const lastNoneleafNodeIndex = Math.floor((n - 1) / 2 - 1)
+  for (let i = lastNoneleafNodeIndex; i >= 0; i--) {
+    heapfiyDown(arr, n, i)
+  }
 
-    for (let j = i + 1; j < n; j++) {
-      if (arr[j] < arr[minIndex]) {
-        minIndex = j
-      }
-    }
-
-    if (i !== minIndex) swap(arr, i, minIndex)
+  for (let i = n - 1; i >= 0; i--) {
+    swap(arr, 0, i)
+    heapfiyDown(arr, i, 0)
   }
 
   return arr
 }
 
+function heapfiyDown(arr: number[], n: number, index: number) {
+  while (2 * index + 1 < n) {
+    const leftChildIndex = 2 * index + 1
+    const rightChildIndex = leftChildIndex + 1
 
+    let largeIndex = leftChildIndex
+    if (rightChildIndex < n && arr[rightChildIndex] > arr[leftChildIndex]) {
+      largeIndex = rightChildIndex
+    }
 
-testSort(selectionSort)
+    if (arr[index] >= arr[largeIndex]) break
+    
+    swap(arr, index, largeIndex)
+    index = largeIndex
+  }
+  
+}
+
+testSort(heapSort)
 // measureSort(selectionSort)

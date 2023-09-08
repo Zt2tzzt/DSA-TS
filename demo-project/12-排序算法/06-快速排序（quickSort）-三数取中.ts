@@ -12,7 +12,7 @@ export default function quickSort(arr: number[]): number[] {
     if (mid > start && mid < end) {
       if (arr[start] > arr[end]) swap(arr, start, end)
       if (arr[mid] > arr[end]) swap(arr, mid, end)
-      if (arr[start] > arr[mid]) swap(arr, start, end)
+      if (arr[start] > arr[mid]) swap(arr, start, mid)
       swap(arr ,mid, end)
     }
 
@@ -42,5 +42,5 @@ export default function quickSort(arr: number[]): number[] {
 }
 
 // 测试
-// testSort(quickSort)
+testSort(quickSort)
 // measureSort(quickSort)
