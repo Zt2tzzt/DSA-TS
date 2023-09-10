@@ -25,21 +25,46 @@ function testSort(fn: SortFn) {
 
 // ------------
 
-function selectionSort(arr: number[]): number[] {
-  const n = arr.length
+function quickSort(arr: number[]): number[] {
+  partition(0, arr.length - 1)
 
-  for (let i = 0; i < n - 1; i++) {
-    let minIndex = i
+  function partition(start: number, end: number) {
+    if (start >= end) return
 
-    for (let j = 0; j < n; j++) {
-      if (arr[j] < arr[minIndex]) minIndex = j
+    // 三叔取中
+    const mid = Math.floor((start + end) / 2)
+    if (start < mid && mid < end) {
+      if (arr[start] > arr[mid]) swap(arr, start, mid)
+      if (arr[mid] > arr[end]) swap(arr, mid, end)
+      if (arr[start] > arr[mid]) swap(arr, start, mid)
+      swap(arr, mid, end)
     }
 
-    if (minIndex !== i) swap(arr, minIndex, i)
+    const pivot = arr[end]
+
+    let i = 0, j = end - 1
+    while (i <= j) {
+      while (arr[i] < pivot) {
+        i++
+      }
+      while (arr[j] > pivot) {
+        j--        
+      }
+
+      if (i <= j) {
+        swap(arr, i, j)
+        i++
+        j--
+      }
+    }
+
+    swap(arr, i, end)
+    partition(0, j)
+    partition(i + 1, end)
   }
 
   return arr
 }
 
-// testSort()
+testSort(quickSort)
 // measureSort(selectionSort)
