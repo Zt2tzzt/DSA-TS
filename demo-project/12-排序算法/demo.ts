@@ -6,23 +6,41 @@ function swap(arr: number[], i: number, j: number) {
 
 // -----------------------
 
-function insertionSort(arr: number[]): number[] {
-  const n = arr.length
+function quickSort(arr: number[]): number[] {
+  partition(0, arr.length - 1)
 
-  for (let i = 1; i < n; i++) {
-    const current = arr[i]
+  function partition(start: number, end: number) {
+    if (start >= end) return arr
 
-    let j = i - 1
-    while (j >= 0 && arr[j] > current) {
-      arr[j + 1] = arr[j]
-      j--
+    const mid = Math.floor((start + end) / 2)
+    if (start < mid && mid < end) {
+      if (arr[start] > arr[mid]) swap(arr, start, end)
+      if (arr[mid] > arr[end]) swap(arr, mid, end)
+      if (arr[start] > arr[mid]) swap(arr, start, end)
+      swap(arr, mid, end)
     }
 
-    arr[j + 1] = current
+    const pivot = arr[end]
+
+    let i = start, j = end - 1
+    while (i <= j) {
+      while (arr[i] < pivot) i++
+      while (arr[j] > pivot) j--
+
+      if (i <= j) {
+        swap(arr, i, j)
+        i++
+        j--
+      }
+    }
+
+    swap(arr, i, end)
+    partition(start, j)
+    partition(i + 1, end)
   }
 
   return arr
 }
 
-testSort(insertionSort)
+testSort(quickSort)
 // measureSort(selectionSort)
