@@ -6,40 +6,38 @@ function swap(arr: number[], i: number, j: number) {
 
 // -----------------------
 
-function quickSort(arr: number[]): number[] {
-  partition(0, arr.length - 1)
+function heapsort(arr: number[]): number[] {
+  const n = arr.length
 
-  function partition(start: number, end: number) {
-    if (start >= end) return arr
+  let lastNoneLeafNodeIndex = Math.floor((n - 1) / 2 - 1)
+  for (let i = lastNoneLeafNodeIndex; i >= 0; i--) {
+    heapfy_down(arr, n, i)
+  }
 
-    const mid = Math.floor((start + end) / 2)
-    if (start < mid && mid < end) {
-      if (arr[start] > arr[mid]) swap(arr, start, mid)
-      if (arr[mid] > arr[end]) swap(arr, mid, end)
-      if (arr[start] > arr[mid]) swap(arr, start, mid)
-      swap(arr, mid, end)
-    }
-
-    const pivot = arr[end]
-    let i = start, j = end - 1
-    while (i <= j) {
-      while (arr[i] < pivot) i++
-      while (arr[j] > pivot) j--
-
-      if (i <= j) {
-        swap(arr, i, j)
-        i++
-        j--
-      }
-    }
-
-    swap(arr, i, end)
-    partition(start, j)
-    partition(i + 1, end)
+  for (let i = n - 1; i > 0; i--) {
+    swap(arr, 0, i)
+    heapfy_down(arr, i, 0)
   }
 
   return arr
 }
 
-testSort(quickSort)
+function heapfy_down(arr: number[], n: number, index: number) {
+  while (2 * index + 1 < n) {
+    const leftChileIndex = 2 * index + 1
+    const rightChildIndex = leftChileIndex + 1
+
+    let largerIndex = leftChileIndex
+    if (rightChildIndex < n && arr[rightChildIndex] > arr[leftChileIndex]) {
+      largerIndex = rightChildIndex
+    }
+
+    if (arr[index] > arr[largerIndex]) break
+
+    swap(arr, largerIndex, index)
+    index = largerIndex
+  }
+}
+
+testSort(heapsort)
 // measureSort(selectionSort)
