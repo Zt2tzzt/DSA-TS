@@ -14,14 +14,13 @@ function quickSort(arr: number[]): number[] {
 
     const mid = Math.floor((start + end) / 2)
     if (start < mid && mid < end) {
-      if (arr[start] > arr[mid]) swap(arr, start, end)
+      if (arr[start] > arr[mid]) swap(arr, start, mid)
       if (arr[mid] > arr[end]) swap(arr, mid, end)
-      if (arr[start] > arr[mid]) swap(arr, start, end)
+      if (arr[start] > arr[mid]) swap(arr, start, mid)
       swap(arr, mid, end)
     }
 
     const pivot = arr[end]
-
     let i = start, j = end - 1
     while (i <= j) {
       while (arr[i] < pivot) i++
