@@ -4,13 +4,13 @@ export function maxArray(nums: number[]): number {
   // 1.定义状态；2.初始化状态
   let prev = nums[0]
 
-  let max = prev
+  let maxSum = prev
   for (let i = 1; i < n; i++) {
     prev = Math.max(nums[i], nums[i] + prev)
-    max = Math.max(prev, max)
+    maxSum = Math.max(prev, maxSum)
   }
 
-  return max
+  return maxSum
 }
 
 // 测试
