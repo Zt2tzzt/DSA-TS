@@ -6,38 +6,22 @@ function swap(arr: number[], i: number, j: number) {
 
 // -----------------------
 
-function heapsort(arr: number[]): number[] {
+function selectionSort(arr: number[]): number[] {
   const n = arr.length
 
-  let lastNoneLeafNodeIndex = Math.floor((n - 1) / 2 - 1)
-  for (let i = lastNoneLeafNodeIndex; i >= 0; i--) {
-    heapfy_down(arr, n, i)
-  }
+  
+  for (let i = 0; i < n - 1; i++) {
+    let minIndex = i
 
-  for (let i = n - 1; i > 0; i--) {
-    swap(arr, 0, i)
-    heapfy_down(arr, i, 0)
+    for (let j = i + 1; j < n; j++) {
+      if (arr[j] < arr[minIndex]) minIndex = j
+    }
+
+    if (i !== minIndex) swap(arr, i, minIndex)
   }
 
   return arr
 }
 
-function heapfy_down(arr: number[], n: number, index: number) {
-  while (2 * index + 1 < n) {
-    const leftChileIndex = 2 * index + 1
-    const rightChildIndex = leftChileIndex + 1
-
-    let largerIndex = leftChileIndex
-    if (rightChildIndex < n && arr[rightChildIndex] > arr[leftChileIndex]) {
-      largerIndex = rightChildIndex
-    }
-
-    if (arr[index] > arr[largerIndex]) break
-
-    swap(arr, largerIndex, index)
-    index = largerIndex
-  }
-}
-
-testSort(heapsort)
+testSort(selectionSort)
 // measureSort(selectionSort)
