@@ -2,12 +2,12 @@ export function maxArray(nums: number[]): number {
   const n = nums.length
 
   // 1.定义状态；2.初始化状态
-  let prev = nums[0]
+  let prevMaxSum = nums[0]
 
-  let maxSum = prev
+  let maxSum = prevMaxSum
   for (let i = 1; i < n; i++) {
-    prev = Math.max(nums[i], nums[i] + prev)
-    maxSum = Math.max(prev, maxSum)
+    prevMaxSum = Math.max(nums[i], nums[i] + prevMaxSum)
+    maxSum = Math.max(prevMaxSum, maxSum)
   }
 
   return maxSum
