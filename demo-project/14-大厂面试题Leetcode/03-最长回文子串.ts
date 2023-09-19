@@ -5,13 +5,13 @@ function longestPalindrome(s: string): string {
 
   let start = 0, end = 0
   for (let i = 0; i < n; i++) {
-    const length1 = centerExpand(s, i, i)
-    const length2 = centerExpand(s, i, i + 1)
-    const len = Math.max(length1, length2)
+    const len1 = centerExpand(s, i, i)
+    const len2 = centerExpand(s, i, i + 1)
+    const maxLen = Math.max(len1, len2)
 
-    if (len > end - start) {
-      start = i - Math.floor((len - 1) / 2)
-      end = i + Math.floor(len / 2)
+    if (maxLen > end - start) {
+      start = i - Math.floor((maxLen - 1) / 2)
+      end = i + Math.floor(maxLen / 2)
     }
   }
 
