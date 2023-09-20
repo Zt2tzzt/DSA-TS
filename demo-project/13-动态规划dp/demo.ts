@@ -1,13 +1,15 @@
-function fibnacci(n: number): number {
-  const dp: number[] = []
+function maxSubArray(nums: number[]): number {
+  const n = nums.length
 
-  let prev = 0
-  let curr = 1
-  for (let i = 2; i <= n; i++) {
-    const newVal = prev + curr
-    prev = curr
-    curr = newVal
+  let prevMaxSum = nums[0]
+
+  let maxSum = prevMaxSum
+  for (let i = 1; i < n; i++) {
+    prevMaxSum = Math.max(nums[i], nums[i] + prevMaxSum)
+    maxSum = Math.max(prevMaxSum, maxSum)
   }
 
-  return curr
-}
+  return maxSum
+};
+
+console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))

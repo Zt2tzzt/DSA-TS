@@ -6,8 +6,8 @@ export function jumpstep(n: number): number {
   for (let i = 2; i <= n; i++) {
     // 3.状态转移方程
     const newVal = prev + curr
-    curr = prev
-    prev = newVal
+    prev = curr
+    curr = newVal
   }
 
   // 4.最终解
