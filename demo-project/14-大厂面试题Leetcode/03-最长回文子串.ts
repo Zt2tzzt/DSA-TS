@@ -19,7 +19,9 @@ function longestPalindrome(s: string): string {
 };
 
 function centerExpand(s: string, left: number, right: number): number {
-  while (left >= 0 && right < s.length && s[left] === s[right]) {
+  const n = s.length
+
+  while (left >= 0 && right < n && s[left] === s[right]) {
     left--
     right++
   }

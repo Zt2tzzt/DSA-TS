@@ -1,15 +1,16 @@
-function maxSubArray(nums: number[]): number {
-  const n = nums.length
+function climbStairs(n: number): number {
+  const dp: number[] = []
 
-  let prevMaxSum = nums[0]
-
-  let maxSum = prevMaxSum
-  for (let i = 1; i < n; i++) {
-    prevMaxSum = Math.max(nums[i], nums[i] + prevMaxSum)
-    maxSum = Math.max(prevMaxSum, maxSum)
+  let prev = 1
+  let curr = 1
+  for (let i = 2; i <= n; i++) {
+    // dp[i] = dp[i - 1] + dp[i - 2]
+    const newVal = curr + prev
+    prev = curr
+    curr = newVal
   }
 
-  return maxSum
+  return curr
 };
 
-console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+console.log(climbStairs(3))
