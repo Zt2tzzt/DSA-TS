@@ -17,8 +17,7 @@ class CQueue {
     else if (this.stack1.length > 0) {
       // 从 stack1 中，取出所有的数据，放到 stack2 中。
       while (this.stack1.length > 0) {
-        const item = this.stack1.pop()!
-        this.stack2.push(item)
+        this.stack2.push(this.stack1.pop()!)
       }
 
       return this.stack2.pop()!
