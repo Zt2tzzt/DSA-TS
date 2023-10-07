@@ -27,16 +27,17 @@ export default function mergeSort(arr: number[]): number[] {
   }
 
   // 判断是否第一个数字中还有剩余的元素，有则将它们加入到新数组中。
-  if (i < leftSorted.length) {
+  /* if (i < leftSorted.length) {
     newArr.push(...leftSorted.slice(i))
   }
   if (j < rightSorted.length) {
     newArr.push(...rightSorted.slice(j))
-  }
+  } */
 
-  return newArr
+  return newArr.concat(leftSorted.slice(i), rightSorted.slice(j))
+  // return newArr
 }
 
 // 测试
-// testSort(mergeSort)
+testSort(mergeSort)
 // measureSort(mergeSort)
